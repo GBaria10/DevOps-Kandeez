@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Environment variables
+
+
+# Logs
+logs/
+*.log
+
+# System/OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
