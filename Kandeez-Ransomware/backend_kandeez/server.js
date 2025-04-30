@@ -6,7 +6,7 @@ const app = express();
 
 // Use fixed port 5000
 const PORT = 5000;
-const MONGODB_URI ="mongodb+srv://mannatnayak22:G3dZ9fUZeCf6Fstm@cluster0.dr05mbd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGODB_URI ="mongodb+srv://gaourangbaria1002:rgAG1ac59Bvj28Wy@cluster0.jwx8zgp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster00";
 
 // Middleware
 app.use(cors());

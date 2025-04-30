@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import KeyList from "./components/KeyList"; // Make sure the path is correct
 
 function App() {
-  const [showMainPage, setShowMainPage] = useState(false);
+  const [showMainPage, setShowMainPage] = useState(true); // default to true
 
   return (
     <div className="App">
@@ -16,6 +17,9 @@ function App() {
           </span>
         </div>
       </nav>
+
+      {/* Render KeyList */}
+      {showMainPage && <KeyList />}
     </div>
   );
 }
