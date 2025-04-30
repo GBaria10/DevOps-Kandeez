@@ -1,21 +1,98 @@
-/* KeyList.css - Improved Version to match App.css */
+/* KeyList.css - Enhanced version for better visibility and aesthetics */
 
-/* Table styling with cohesive design elements */
+:root {
+  /* Primary brand colors */
+  --primary: #dd1818;
+  --primary-light: #ff3333;
+  --primary-dark: #aa0000;
+  
+  /* Background colors */
+  --background: #1a1a1a;
+  --surface: #242424;
+  --surface-light: #2d2d2d;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #aaaaaa;
+  
+  /* Border colors */
+  --border: rgba(255, 255, 255, 0.1);
+  
+  /* Status colors */
+  --status-active: #35d492;
+  --status-inactive: #ff4b4b;
+  --status-pending: #ffb847;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Main container */
+.container {
+  padding: 2rem 1rem;
+}
+
+/* Page title */
+.page-title {
+  color: var(--text-primary);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Section titles */
+.section-title {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1.5rem;
+  position: relative;
+  padding-bottom: 0.7rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 2px;
+}
+
+/* Status label */
+.status-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Table styling with enhanced visibility */
 .table {
   background-color: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
 .table:hover {
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
   transform: translateY(-3px);
 }
 
@@ -23,425 +100,213 @@
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   color: var(--text-primary);
   font-weight: 600;
-  padding: 1rem 1.2rem;
+  padding: 1.2rem 1.5rem;
   border-bottom: none;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
-  position: relative;
-}
-
-.table thead th:first-child {
-  border-top-left-radius: 12px;
-}
-
-.table thead th:last-child {
-  border-top-right-radius: 12px;
-}
-
-/* Gradient line under header */
-.table thead::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary-light), transparent);
-}
-
-/* Table row alternating colors */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(255, 26, 26, 0.03);
-}
-
-.table-striped tbody tr {
-  transition: background-color 0.2s ease;
-}
-
-.table-striped tbody tr:hover {
-  background-color: rgba(255, 26, 26, 0.08);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .table tbody td {
-  padding: 0.9rem 1.2rem;
+  padding: 1.2rem 1.5rem;
   vertical-align: middle;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-secondary);
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 1.05rem;
 }
 
-/* Checkbox styling to match theme */
-.form-check-input {
-  width: 18px;
-  height: 18px;
-  margin-top: 0.25rem;
-  margin-right: 0.5rem;
-  background-color: var(--surface-light);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  cursor: pointer;
+/* Alternating row colors */
+.table tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(255, 26, 26, 0.1);
+}
+
+/* Status indicators with improved visibility */
+.status-indicator {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
   position: relative;
 }
 
-.form-check-input:checked {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(255, 26, 26, 0.2);
-}
-
-.form-check-input:checked::after {
+.status-indicator::after {
   content: '';
   position: absolute;
-  top: 2px;
-  left: 6px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* Label styling */
-.form-check-label {
-  user-select: none;
-  font-weight: 500;
-  color: var(--text-primary);
-  transition: color 0.2s ease;
-  cursor: pointer;
-  padding-left: 0.5rem;
-}
-
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0;
-}
-
-/* Status indicator with enhanced design */
-.status-indicator {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
   border-radius: 50%;
-  margin-right: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  animation: pulse 2s infinite;
 }
 
 .status-active {
-  background-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  background-color: var(--status-active);
+  box-shadow: 0 0 10px rgba(53, 212, 146, 0.7);
 }
 
 .status-inactive {
-  background-color: #ef4444;
-  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  background-color: var(--status-inactive);
+  box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
 }
 
 .status-pending {
-  background-color: #f59e0b;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  background-color: var(--status-pending);
+  box-shadow: 0 0 10px rgba(255, 184, 71, 0.7);
 }
 
-/* Modal styling to match theme */
-.modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(3px);
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
 }
 
-.modal-content {
-  background-color: var(--surface);
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  overflow: hidden;
-}
-
-.modal-header {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-  color: var(--text-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.2rem 1.5rem;
-  position: relative;
-}
-
-.modal-title {
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.25rem;
-}
-
-.modal-body {
-  padding: 1.5rem;
-  background-color: var(--surface);
-}
-
-.modal-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1rem 1.5rem;
-  background-color: var(--surface);
-}
-
-/* Close button for modal */
-.btn-close {
-  color: var(--text-primary);
-  text-shadow: none;
-  opacity: 0.8;
-  transition: all 0.2s ease;
-}
-
-.btn-close:hover {
-  opacity: 1;
-  transform: rotate(90deg);
-}
-
-/* List group styling */
-.list-group {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.list-group-item {
-  padding: 1rem 1.2rem;
-  background-color: var(--surface-light);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-}
-
-.list-group-item:hover {
-  background-color: rgba(255, 26, 26, 0.05);
-}
-
-.list-group-item strong {
-  color: var(--primary-light);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-/* Alert and error states */
-.alert-danger {
-  background-color: rgba(220, 53, 69, 0.1);
-  color: #ff6b6b;
-  border: none;
-  border-left: 4px solid #dc3545;
-  border-radius: 8px;
-  padding: 1rem 1.2rem;
-  font-weight: 500;
-  animation: fadeIn 0.3s ease-out;
-  display: flex;
-  align-items: center;
-}
-
-.alert-danger::before {
-  content: '⚠️';
-  margin-right: 10px;
-  font-size: 1.1rem;
-}
-
-/* Heading styles to match theme */
-h2 {
-  color: var(--text-primary);
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.7rem;
-  position: relative;
-  font-size: 1.5rem;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  border-radius: 3px;
-}
-
-/* Button styling to match App.css */
+/* Button styling with improved contrast */
 .btn {
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 8px;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: none;
-  position: relative;
-  overflow: hidden;
-  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-}
-
-.btn:hover::after {
-  transform: translateX(100%);
+  cursor: pointer;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .btn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: var(--text-primary);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
 }
 
-.btn-secondary {
-  background: linear-gradient(135deg, #3d3d3d, #555555);
+/* Download key button */
+.download-key {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-  background: linear-gradient(135deg, #4d4d4d, #656565);
-}
-
-.btn-danger {
-  background: linear-gradient(135deg, #dc3545, #ff4d5e);
-  color: var(--text-primary);
-}
-
-.btn-danger:hover {
-  background: linear-gradient(135deg, #e74c3c, #ff6b6b);
-}
-
-.btn-success {
-  background: linear-gradient(135deg, #10b981, #34d399);
-  color: var(--text-primary);
-}
-
-.btn-success:hover {
-  background: linear-gradient(135deg, #059669, #10b981);
-}
-
-.btn-sm {
-  padding: 0.35rem 0.7rem;
-  font-size: 0.875rem;
-  border-radius: 6px;
-}
-
-/* Icon styles inside buttons */
-.btn i, .btn svg {
-  margin-right: 0.5rem;
-}
-
-/* Button groups */
-.btn-group {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.btn-group .btn {
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.btn-group .btn:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-.btn-group .btn:last-child {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-/* Loading spinner */
-.spinner {
-  width: 2rem;
-  height: 2rem;
-  border: 3px solid rgba(255, 26, 26, 0.2);
-  border-radius: 50%;
-  border-top-color: var(--primary);
-  animation: spin 1s ease-in-out infinite;
-  margin: 2rem auto;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Additional utility classes for KeyList */
-.key-badge {
-  display: inline-block;
-  padding: 0.35rem 0.7rem;
-  font-size: 0.75rem;
   font-weight: 600;
-  border-radius: 20px;
-  background-color: rgba(255, 26, 26, 0.1);
-  color: var(--primary-light);
-  margin-right: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.download-key:hover {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Machine info button */
+.machine-info {
+  background-color: #ff3333;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.machine-info:hover {
+  background-color: #ff5555;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* IP address styling */
+.ip-address {
+  font-family: 'Consolas', 'Monaco', monospace;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
 }
 
-.key-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background-color: var(--surface-light);
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* Machine name and identifiers */
+.machine-id {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.key-item:hover {
-  transform: translateX(3px);
-  background-color: rgba(255, 26, 26, 0.05);
-  border-left: 3px solid var(--primary);
+.machine-name {
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
-.key-item-actions {
-  display: flex;
-  gap: 0.5rem;
+/* Responsive tweaks */
+@media (max-width: 992px) {
+  .table thead th,
+  .table tbody td {
+    padding: 1rem;
+  }
+  
+  .btn, .download-key, .machine-info {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }
 
-/* Responsive adjustments for tables */
 @media (max-width: 768px) {
-  .table-responsive {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  .table {
+    display: block;
+    overflow-x: auto;
   }
   
   .table thead th,
   .table tbody td {
-    padding: 0.75rem 1rem;
+    padding: 0.8rem;
     font-size: 0.9rem;
   }
   
-  .btn-sm {
-    padding: 0.25rem 0.5rem;
+  .btn, .download-key, .machine-info {
+    padding: 0.4rem 0.7rem;
     font-size: 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
   }
 }
