@@ -1,0 +1,24 @@
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Red top navbar */
+.custom-navbar {
+  background-color: #b30000; /* Deep red */
+  padding: 1rem 0;
+}
+
+.custom-title {
+  color: white;
+  font-size: 1.75rem;
+}

@@ -59,7 +59,7 @@ const KeyList = () => {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>#</th>
+                <th>Machine No.</th>
                 <th>Hostname</th>
                 <th>IP Address</th>
                 <th>Status</th>
