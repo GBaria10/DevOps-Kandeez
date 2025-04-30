@@ -1,10 +1,14 @@
 // App.jsx
 
+import React, { useState } from "react";
 import KeyList from './components/KeyList';
+import HomePage from "./components/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'; // make sure you have this
+import './App.css';
 
 function App() {
+  const [showMainPage, setShowMainPage] = useState(false);
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark custom-navbar">
@@ -14,7 +18,8 @@ function App() {
           </span>
         </div>
       </nav>
-      <KeyList />
+
+      {showMainPage ? <KeyList /> : <HomePage onContinue={() => setShowMainPage(true)} />}
     </div>
   );
 }
