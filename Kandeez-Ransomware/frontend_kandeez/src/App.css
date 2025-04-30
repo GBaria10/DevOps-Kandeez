@@ -96,7 +96,7 @@ body {
   overflow: hidden;
 }
 
-.keylist-wrapper::before {
+/* .keylist-wrapper::before {
   content: '';
   position: absolute;
   top: 0;
@@ -109,7 +109,7 @@ body {
 .keylist-wrapper:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-}
+} */
 
 /* Section headings */
 .section-heading {
