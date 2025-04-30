@@ -18,8 +18,6 @@ function App() {
           </span>
         </div>
       </nav>
-
-      {showMainPage ? <KeyList /> : <HomePage onContinue={() => setShowMainPage(true)} />}
     </div>
   );
 }
