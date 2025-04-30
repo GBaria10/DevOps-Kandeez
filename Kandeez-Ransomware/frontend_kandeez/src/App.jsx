@@ -1,8 +1,6 @@
 // App.jsx
 
 import React, { useState } from "react";
-import KeyList from './components/KeyList';
-import HomePage from "./components/HomePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

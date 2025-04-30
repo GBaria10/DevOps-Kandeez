@@ -1,19 +1,21 @@
 /* App.css */
 
 body {
-  background-color: #0f0f0f;
-  color: #fff;
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
 }
 
 .custom-navbar {
-  background: linear-gradient(to right, #b30000, #ff1a1a);
-  padding: 1rem;
+  background-color: #1f1f1f;
+  border-bottom: 2px solid #4e4e4e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .custom-title {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #fff;
-  text-shadow: 1px 1px 2px #000;
+  color: #00ffcc;
+  letter-spacing: 1px;
 }
