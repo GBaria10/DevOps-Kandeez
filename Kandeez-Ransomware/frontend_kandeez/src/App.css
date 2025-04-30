@@ -1,24 +1,32 @@
 /* App.css */
 
-body, html {
+/* Apply a dark background to the whole page */
+body {
   margin: 0;
-  padding: 0;
-  background-color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #f0f0f0;
 }
 
-.App {
-  min-height: 100vh;
-  background-color: white;
-}
-
-/* Red top navbar */
+/* Top navbar with red gradient */
 .custom-navbar {
-  background-color: #b30000; /* Deep red */
+  background: linear-gradient(90deg, #8c0000, #cc0000);
   padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Title styling */
 .custom-title {
-  color: white;
-  font-size: 1.75rem;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Push page content below navbar */
+.App {
+  padding-top: 100px;
 }
