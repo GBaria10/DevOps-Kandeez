@@ -1,10 +1,7 @@
-// src/services/KeyService.js
-
 import axios from 'axios';
 
-const backendPort = import.meta.env.VITE_BACKEND_PORT;
-const backendIP = import.meta.env.VITE_BACKEND_IP
-const API_URL = `http://${backendIP}:${backendPort}/api`;
+const API_URL = "http://172.19.21.163:5000/api"; // backend is the docker-compose service name
+
 
 export const fetchAllKeys = async () => {
   try {

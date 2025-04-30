@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend_kandeez
+    container_name: backend
+    ports:
+      - "5000:5000"
+    networks:
+      - kandeez-net
+
+  frontend:
+    build:
+      context: ./frontend_kandeez
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - kandeez-net
+
+networks:
+  kandeez-net:
+    driver: bridge
