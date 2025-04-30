@@ -14,3 +14,5 @@ npm start
 cd .\Kandeez-Ransomware\forntend_kandeez\
 npm install
 npm run dev
+
+Devops also doneeee
