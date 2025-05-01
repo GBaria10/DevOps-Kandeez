@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = "http://172.19.21.163:5000/api"; // backend is the docker-compose service name
+const API_URL = "http://192.168.137.1:5000/api"; // backend is the docker-compose service name
 
 
 export const fetchAllKeys = async () => {
